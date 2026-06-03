@@ -1,0 +1,81 @@
+{
+  "title": "제주도 내 발생하는 생활쓰레기 품목별 재활용 비율",
+  "year": 2024,
+  "unit": "tons",
+  "formula": "각 품목별 재활용 수 / 제주 생활쓰레기 품목별 발생량",
+  "sourceNote": "분자는 제주도 품목별 재활용 현황(2024)에서 생활폐기물 구간의 '계 > 재활용 폐기물량'을 사용했습니다. 분모는 폐기물_발생량_및_처리현황_생활폐기물_20260517144500에서 제주 행의 '2024 > 발생량 > 소계'를 사용했습니다.",
+  "items": [
+    {
+      "name": "음식물류폐기물",
+      "recycledTons": 6081.175,
+      "generatedTons": 69840.1,
+      "matchedRows": "음식물류 폐기물 + 음식물류 폐기물 분리배출"
+    },
+    {
+      "name": "폐지류",
+      "recycledTons": 39329.544,
+      "generatedTons": 142710.6,
+      "matchedRows": "혼합배출 폐지류 + 분리배출 종이팩/기타"
+    },
+    {
+      "name": "고철 및 금속캔류",
+      "recycledTons": 12925.634,
+      "generatedTons": 82543.7,
+      "matchedRows": "폐금속류 + 고철류 + 금속캔"
+    },
+    {
+      "name": "폐합성수지",
+      "recycledTons": 173.13,
+      "generatedTons": 68033.6,
+      "matchedRows": "폐합성수지류 + 비닐류 + 발포수지류 + PET병 + 기타"
+    },
+    {
+      "name": "폐합성고무",
+      "recycledTons": 0,
+      "generatedTons": 949.3,
+      "matchedRows": "폐고무류"
+    },
+    {
+      "name": "유리병 및 폐유리",
+      "recycledTons": 0,
+      "generatedTons": 15965.2,
+      "matchedRows": "폐유리류 + 폐유리병류"
+    },
+    {
+      "name": "폐의류 및 원단류",
+      "recycledTons": 5804.824,
+      "generatedTons": 9829.1,
+      "matchedRows": "폐섬유류 + 폐의류"
+    },
+    {
+      "name": "폐전기전자제품",
+      "recycledTons": 4280.545,
+      "generatedTons": 1686,
+      "matchedRows": "폐전기전자제품"
+    },
+    {
+      "name": "폐목재 및 폐가구류",
+      "recycledTons": 0,
+      "generatedTons": 11817.3,
+      "matchedRows": "폐목재류 + 폐가구류"
+    },
+    {
+      "name": "조명폐기물",
+      "recycledTons": 0,
+      "generatedTons": 84.1,
+      "matchedRows": "조명폐기물"
+    },
+    {
+      "name": "폐전지류",
+      "recycledTons": 0,
+      "generatedTons": 103.4,
+      "matchedRows": "폐전지류"
+    },
+    {
+      "name": "영농폐기물",
+      "recycledTons": 5121.74,
+      "generatedTons": 5274,
+      "matchedRows": "농약용기류 + 폐비닐"
+    }
+  ]
+}
