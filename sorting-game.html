@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>분리배출 캐치 미니게임</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="game-section" aria-labelledby="game-title">
+        <header class="section-head">
+          <div>
+            <p class="eyebrow">생활 속 분리배출</p>
+            <h1 id="game-title">떨어지는 쓰레기 분리배출 게임</h1>
+          </div>
+          <div class="page-actions">
+            <a class="page-link" href="game.html">OX 퀴즈 보기</a>
+            <a class="page-link" href="jeju.html">제주 페이지로 돌아가기</a>
+            <a class="page-link" href="index.html">전국 지도 보기</a>
+          </div>
+        </header>
+
+        <section class="sorter-shell" aria-live="polite">
+          <div class="sorter-status">
+            <span id="round-count">0 / 12</span>
+            <strong id="sorter-score">0점</strong>
+            <span id="miss-count">놓친 쓰레기 0개</span>
+          </div>
+
+          <div class="sorter-stage" id="sorter-stage">
+            <div class="falling-item" id="falling-item">
+              <span id="item-symbol">?</span>
+              <strong id="item-name">시작 대기</strong>
+            </div>
+            <p class="sorter-message" id="sorter-message">시작 버튼을 누르면 쓰레기가 떨어집니다.</p>
+          </div>
+
+          <div class="bin-row" id="bin-row" aria-label="분리수거함 선택"></div>
+
+          <div class="sorter-controls">
+            <button class="next-button" id="start-button" type="button">게임 시작</button>
+            <button class="page-link" id="reset-button" type="button">처음부터</button>
+          </div>
+        </section>
+
+        <section class="result-panel" id="result-panel" hidden>
+          <p class="eyebrow">게임 결과</p>
+          <h2 id="result-title">결과</h2>
+          <p id="result-summary"></p>
+          <div id="review-list" class="review-list"></div>
+          <button class="next-button" id="restart-button" type="button">다시 하기</button>
+        </section>
+
+        <section class="insight-band" aria-label="게임 안내">
+          <h3>게임의 의미</h3>
+          <p id="game-notice">
+            실생활에서 헷갈리는 품목을 직접 분리수거함에 보내면서, 데이터 시각화가 실제 분리배출 행동으로 이어질 수 있도록 구성했습니다.
+          </p>
+        </section>
+      </section>
+    </main>
+
+    <script src="sorting-game.js"></script>
+  </body>
+</html>
