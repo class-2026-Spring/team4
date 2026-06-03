@@ -68,6 +68,8 @@ function drawMap(geojson) {
     path.setAttribute("role", "button");
     path.setAttribute("aria-label", `${mapNameToProvince[id] ?? id} 재활용 판매 비율 보기`);
     path.dataset.id = id;
+    path.addEventListener("mouseenter", () => selectRegion(id));
+    path.addEventListener("focus", () => selectRegion(id));
     path.addEventListener("click", () => selectRegion(id, { openJejuPage: id === "Jeju" }));
     path.addEventListener("keydown", (event) => {
       if (event.key === "Enter" || event.key === " ") {
