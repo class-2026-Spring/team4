@@ -105,6 +105,12 @@ h1 {
   margin-bottom: 20px;
 }
 
+.top-actions {
+  display: grid;
+  gap: 10px;
+  justify-items: end;
+}
+
 .page-link {
   display: inline-flex;
   align-items: center;
@@ -448,6 +454,7 @@ dd {
 .bar-row.is-over .bar-rate {
   color: var(--blue);
 }
+
 
 .bar-source {
   grid-column: 1 / -1;
@@ -824,6 +831,11 @@ dd {
 
   .page-actions {
     justify-content: flex-start;
+  }
+
+  .top-actions {
+    width: 100%;
+    justify-items: start;
   }
 }
 

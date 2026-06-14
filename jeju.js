@@ -17,20 +17,21 @@ function drawJejuWaste(items) {
       rate: item.generatedTons > 0 ? (item.recycledTons / item.generatedTons) * 100 : 0,
     }))
     .sort((a, b) => b.rate - a.rate);
+
   const totalRecycled = enrichedItems.reduce((sum, item) => sum + item.recycledTons, 0);
   const totalGenerated = enrichedItems.reduce((sum, item) => sum + item.generatedTons, 0);
   const averageRate = totalGenerated > 0 ? (totalRecycled / totalGenerated) * 100 : 0;
   const topItem = enrichedItems[0];
 
   jejuAverageRate.textContent = `${fmtOne.format(averageRate)}%`;
-  jejuTopItem.textContent = topItem.name;
-  jejuTopRate.textContent = `${fmtOne.format(topItem.rate)}%`;
+  jejuTopItem.textContent = topItem?.name ?? "-";
+  jejuTopRate.textContent = topItem ? `${fmtOne.format(topItem.rate)}%` : "-";
   jejuChart.innerHTML = "";
 
   enrichedItems.forEach((item) => {
     const row = document.createElement("article");
     const displayRate = Math.min(item.rate, 100);
-    row.className = `bar-row${item.rate > 100 ? " is-over" : ""}`;
+    row.className = "bar-row";
     row.innerHTML = `
       <div class="bar-meta">
         <strong>${item.name}</strong>
