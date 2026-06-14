@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>전국 재활용 판매 비율과 제주 생활쓰레기</title>
+    <title>전국 생활폐기물 재활용 비율과 제주 생활쓰레기</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -12,19 +12,19 @@
         <header class="topbar">
           <div>
             <p class="eyebrow">2024 폐기물 발생량 기준</p>
-            <h1>전국 시도별 재활용 판매 비율</h1>
+            <h1>전국 시도별 생활폐기물 재활용 비율</h1>
           </div>
           <div class="formula">
-            <span>재활용 판매량</span>
+            <span>재활용 처리량</span>
             <strong>/</strong>
-            <span>전체 폐기물 발생량</span>
+            <span>생활폐기물 발생량</span>
           </div>
         </header>
 
         <div class="workspace">
-          <section class="map-panel" aria-label="전국 시도별 재활용 판매 비율 지도">
-            <svg id="korea-map" viewBox="0 0 760 900" role="img" aria-label="대한민국 시도별 재활용 판매 비율 지도"></svg>
-            <div class="legend" aria-label="재활용 판매 비율 범례">
+          <section class="map-panel" aria-label="전국 시도별 생활폐기물 재활용 비율 지도">
+            <svg id="korea-map" viewBox="0 0 760 900" role="img" aria-label="대한민국 시도별 생활폐기물 재활용 비율 지도"></svg>
+            <div class="legend" aria-label="생활폐기물 재활용 비율 범례">
               <span>낮음</span>
               <div class="legend-bar"></div>
               <span>높음</span>
@@ -39,11 +39,11 @@
             </div>
             <dl class="metrics">
               <div>
-                <dt>재활용 판매량</dt>
+                <dt>재활용 처리량</dt>
                 <dd id="selected-sales">-</dd>
               </div>
               <div>
-                <dt>전체 폐기물 발생량</dt>
+                <dt>생활폐기물 발생량</dt>
                 <dd id="selected-waste">-</dd>
               </div>
               <div>
@@ -53,7 +53,7 @@
             </dl>
             <div class="ranking">
               <div class="ranking-head">
-                <h3>재활용 판매 비율 순위</h3>
+                <h3>생활폐기물 재활용 비율 순위</h3>
                 <span>상위 8개</span>
               </div>
               <ol id="ranking-list"></ol>

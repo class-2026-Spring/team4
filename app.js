@@ -32,6 +32,15 @@ const fmtOne = new Intl.NumberFormat("ko-KR", { maximumFractionDigits: 1 });
 let regionData = new Map();
 let selectedId = "Gyeonggi";
 
+function getRecycledTons(region) {
+  return region.recycledTons ?? region.recyclingSalesTons ?? 0;
+}
+
+function getRate(region) {
+  if (typeof region.recyclingRate === "number") return region.recyclingRate;
+  return region.wasteGenerationTons > 0 ? (getRecycledTons(region) / region.wasteGenerationTons) * 100 : 0;
+}
+
 Promise.all([
   fetch("data/korea-adm1.geojson").then((response) => response.json()),
   fetch("data/recycling-rates.json").then((response) => response.json()),
@@ -63,10 +72,10 @@ function drawMap(geojson) {
     const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
     path.setAttribute("d", geometryToPath(feature.geometry, bounds, scale, offsetX, offsetY));
     path.setAttribute("class", "region");
-    path.setAttribute("fill", colorForRate(region?.recyclingRate ?? 0));
+    path.setAttribute("fill", colorForRate(region ? getRate(region) : 0));
     path.setAttribute("tabindex", "0");
     path.setAttribute("role", "button");
-    path.setAttribute("aria-label", `${mapNameToProvince[id] ?? id} 재활용 판매 비율 보기`);
+    path.setAttribute("aria-label", `${mapNameToProvince[id] ?? id} 생활폐기물 재활용 비율 보기`);
     path.dataset.id = id;
     path.addEventListener("mouseenter", () => selectRegion(id));
     path.addEventListener("focus", () => selectRegion(id));
@@ -107,10 +116,13 @@ function selectRegion(id, options = {}) {
   }
 
   selectedName.textContent = region.name;
-  selectedRate.textContent = `${fmtOne.format(region.recyclingRate)}%`;
-  selectedSales.textContent = `${fmt.format(Math.round(region.recyclingSalesTons))} 톤`;
-  selectedWaste.textContent = `${fmt.format(region.wasteGenerationTons)} 톤 (${fmt.format(region.wasteGenerationManTon)} 만톤/년)`;
-  selectedFormula.textContent = `${fmt.format(Math.round(region.recyclingSalesTons))} / ${fmt.format(region.wasteGenerationTons)} 톤`;
+  const recycledTons = getRecycledTons(region);
+  const rate = getRate(region);
+
+  selectedRate.textContent = `${fmtOne.format(rate)}%`;
+  selectedSales.textContent = `${fmt.format(Math.round(recycledTons))} 톤`;
+  selectedWaste.textContent = `${fmt.format(Math.round(region.wasteGenerationTons))} 톤 (${fmtOne.format(region.wasteGenerationTons / 10000)} 만톤/년)`;
+  selectedFormula.textContent = `${fmt.format(Math.round(recycledTons))} / ${fmt.format(Math.round(region.wasteGenerationTons))} 톤`;
 
   if (options.openJejuPage) {
     window.location.href = "jeju.html";
@@ -126,7 +138,7 @@ function drawRanking(regions) {
     item.innerHTML = `
       <span class="rank-no">${index + 1}</span>
       <span class="rank-name">${region.name}</span>
-      <span class="rank-rate">${fmtOne.format(region.recyclingRate)}%</span>
+      <span class="rank-rate">${fmtOne.format(getRate(region))}%</span>
     `;
     item.addEventListener("click", () => selectRegion(region.id));
     rankingList.appendChild(item);
