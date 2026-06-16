@@ -74,5 +74,5 @@ team4/
 
 ## 🔗 바로가기
 
-- [🌐 웹사이트 바로가기]([https://class-2026-spring.github.io/team4/](https://raw.githack.com/class-2026-Spring/team4/master/index.html))
+- [🌐 웹사이트 바로가기](https://raw.githack.com/class-2026-Spring/team4/master/index.html)
 - [📊 공공데이터포털](https://www.data.go.kr)
