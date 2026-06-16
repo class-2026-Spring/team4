@@ -459,6 +459,7 @@ dd {
 .bar-source {
   grid-column: 1 / -1;
   margin: -2px 0 0;
+  font-style: italic;
 }
 
 .insight-band {
