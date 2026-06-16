@@ -15,8 +15,11 @@ const reviewList = document.getElementById("review-list");
 const restartButton = document.getElementById("restart-button");
 const gameNotice = document.getElementById("game-notice");
 
-const totalRounds = 12;
-const fallDuration = 3600;
+// 낙하 시간 (ms) 구간별 설정
+// 1~5라운드: 4600ms (느리게 워밍업)
+// 6~10라운드: 4100ms (조금 빠르게)
+// 11라운드~: 3600ms부터 시작해서 5라운드마다 200ms씩 단축
+const MIN_FALL_DURATION = 800; // 최소 낙하 시간
 
 let bins = [];
 let items = [];
@@ -41,7 +44,6 @@ fetch("data/sorting-game.json")
 
 startButton.addEventListener("click", () => {
   resultPanel.hidden = true;
-  if (round >= totalRounds) resetGame();
   startButton.textContent = "진행 중";
   startButton.disabled = true;
   nextDrop();
@@ -53,15 +55,23 @@ restartButton.addEventListener("click", () => {
   nextDrop();
 });
 
+function getFallDuration() {
+  if (round <= 5) return 4600;           // 1~5라운드: 느린 워밍업
+  if (round <= 10) return 4100;          // 6~10라운드: 중간 속도
+  // 11라운드~: 3600ms부터 5라운드마다 200ms씩 단축
+  const speedLevel = Math.floor((round - 11) / 5);
+  return Math.max(3600 - speedLevel * 200, MIN_FALL_DURATION);
+}
+
 function renderBins() {
   binRow.innerHTML = "";
-  bins.forEach((bin) => {
+  bins.forEach((bin, index) => {
     const button = document.createElement("button");
     button.className = "sort-bin";
     button.type = "button";
     button.dataset.bin = bin.id;
     button.style.setProperty("--bin-color", bin.color);
-    button.innerHTML = `<span></span><strong>${bin.name}</strong>`;
+    button.innerHTML = `<span></span><strong>${index + 1}. ${bin.name}</strong>`;
     button.addEventListener("click", () => chooseBin(bin.id));
     binRow.appendChild(button);
   });
@@ -84,22 +94,32 @@ function resetGame() {
 }
 
 function nextDrop() {
-  if (round >= totalRounds) {
-    finishGame();
-    return;
-  }
   round += 1;
   currentItem = items[Math.floor(Math.random() * items.length)];
   falling = true;
   startedAt = performance.now();
   setItemVisual(currentItem);
-  sorterMessage.textContent = "알맞은 분리수거함을 클릭하세요.";
+
+  if (round === 1) {
+    sorterMessage.textContent = "천천히 시작해볼까요? 알맞은 분리수거함을 클릭하세요.";
+  } else if (round === 6) {
+    sorterMessage.textContent = "⚡ 속도가 조금 빨라집니다!";
+  } else if (round === 11) {
+    sorterMessage.textContent = "⚡ 본격 시작! 속도가 빨라집니다!";
+  } else if (round > 11 && (round - 11) % 5 === 0) {
+    const speedLevel = Math.floor((round - 11) / 5);
+    sorterMessage.textContent = `⚡ ${speedLevel}단계! 더 빨라졌습니다!`;
+  } else {
+    sorterMessage.textContent = "알맞은 분리수거함을 클릭하세요.";
+  }
+
   updateStatus();
   animateDrop(startedAt);
 }
 
 function animateDrop(now) {
   if (!falling) return;
+  const fallDuration = getFallDuration();
   const progress = Math.min((now - startedAt) / fallDuration, 1);
   const x = 12 + ((round * 19) % 76);
   const y = 10 + progress * 68;
@@ -140,33 +160,28 @@ function chooseBin(binId) {
 
 function scheduleNextDrop() {
   setTimeout(() => {
-    if (round >= totalRounds) {
-      finishGame();
-      return;
-    }
     nextDrop();
   }, 950);
 }
 
-function finishGame() {
-  startButton.disabled = false;
-  startButton.textContent = "다시 시작";
-  setItemVisual(null);
-  const percent = Math.round((score / totalRounds) * 100);
-  resultPanel.hidden = false;
-  resultTitle.textContent = `${score} / ${totalRounds}개 성공`;
-  resultSummary.textContent = `${percent}% 성공률입니다. 헷갈렸던 품목을 아래에서 다시 확인해보세요.`;
-  reviewList.innerHTML = "";
+function updateStatus() {
+  let speedText = "";
+  if (round <= 5) speedText = " · 🐢 워밍업";
+  else if (round <= 10) speedText = " · 🚶 준비";
+  else {
+    const speedLevel = Math.floor((round - 11) / 5);
+    speedText = speedLevel > 0 ? ` · ⚡ ${speedLevel}단계` : " · 🏃 시작";
+  }
+  roundCount.textContent = `${round}라운드${speedText}`;
+  sorterScore.textContent = `${score}점`;
+  missCount.textContent = `놓친 쓰레기 ${misses}개`;
+}
 
-  history.forEach((entry) => {
-    const item = document.createElement("article");
-    item.className = `review-item ${entry.correct ? "is-correct" : "is-wrong"}`;
-    item.innerHTML = `
-      <strong>${entry.name}</strong>
-      <span>${entry.correct ? "성공" : "실패"} · 정답 통: ${binName(entry.category)}</span>
-      <p>${entry.tip}</p>
-    `;
-    reviewList.appendChild(item);
+function recordAnswer(selectedBin, correct) {
+  history.push({
+    ...currentItem,
+    selectedBin,
+    correct,
   });
 }
 
@@ -182,20 +197,6 @@ function setItemVisual(item) {
   itemName.textContent = item.name;
 }
 
-function updateStatus() {
-  roundCount.textContent = `${round} / ${totalRounds}`;
-  sorterScore.textContent = `${score}점`;
-  missCount.textContent = `놓친 쓰레기 ${misses}개`;
-}
-
-function recordAnswer(selectedBin, correct) {
-  history.push({
-    ...currentItem,
-    selectedBin,
-    correct,
-  });
-}
-
 function pulseBin(binId, correct) {
   const bin = binRow.querySelector(`[data-bin="${binId}"]`);
   if (!bin) return;
@@ -208,6 +209,7 @@ function pulseBin(binId, correct) {
 function binName(binId) {
   return bins.find((bin) => bin.id === binId)?.name ?? "알 수 없음";
 }
+
 document.addEventListener("keydown", (e) => {
   const keyMap = { "1": 0, "2": 1, "3": 2, "4": 3, "5": 4, "6": 5 };
   if (e.key in keyMap) {

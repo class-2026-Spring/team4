@@ -25,13 +25,13 @@
     {
       "name": "오염된 비닐",
       "category": "general",
-      "symbol": "!",
+      "symbol": "!VIN",
       "tip": "음식물이 많이 묻어 세척하기 어려운 비닐은 일반쓰레기로 배출합니다."
     },
     {
       "name": "플라스틱 빨대",
       "category": "general",
-      "symbol": "I",
+      "symbol": "STW",
       "tip": "빨대처럼 작은 품목은 선별이 어려워 일반쓰레기 배출이 더 안전합니다."
     },
     {
@@ -69,6 +69,306 @@
       "category": "metal",
       "symbol": "CAN",
       "tip": "내용물을 비운 뒤 캔/금속류로 분리배출합니다."
+    },
+    {
+      "name": "신문지",
+      "category": "paper",
+      "symbol": "NEW",
+      "tip": "신문지는 종이류로 분리배출합니다. 물에 젖지 않도록 묶어서 배출하세요."
+    },
+    {
+      "name": "책",
+      "category": "paper",
+      "symbol": "BK",
+      "tip": "표지의 코팅 부분을 제거하고 종이류로 배출합니다."
+    },
+    {
+      "name": "영수증",
+      "category": "general",
+      "symbol": "RCP",
+      "tip": "감열지 영수증은 재활용이 어려워 일반쓰레기로 배출합니다."
+    },
+    {
+      "name": "종이컵",
+      "category": "general",
+      "symbol": "CUP",
+      "tip": "종이컵은 내부 코팅 때문에 일반 종이류로 재활용이 어렵습니다. 일반쓰레기로 배출하세요."
+    },
+    {
+      "name": "스티로폼",
+      "category": "plastic",
+      "symbol": "STY",
+      "tip": "스티로폼은 플라스틱류로 분리배출합니다. 이물질을 제거한 뒤 배출하세요."
+    },
+    {
+      "name": "샴푸통",
+      "category": "plastic",
+      "symbol": "SHP",
+      "tip": "내용물을 비우고 헹군 뒤 플라스틱류로 배출합니다."
+    },
+    {
+      "name": "깨끗한 배달 용기",
+      "category": "plastic",
+      "symbol": "BOX",
+      "tip": "세척한 플라스틱 배달 용기는 플라스틱류로 분리배출할 수 있습니다."
+    },
+    {
+      "name": "오염된 배달 용기",
+      "category": "general",
+      "symbol": "!BOX",
+      "tip": "음식물이 묻어 세척이 어려운 배달 용기는 일반쓰레기로 배출합니다."
+    },
+    {
+      "name": "알루미늄 호일",
+      "category": "metal",
+      "symbol": "FOIL",
+      "tip": "알루미늄 호일은 캔/금속류로 분리배출합니다. 이물질을 제거하고 모아서 배출하세요."
+    },
+    {
+      "name": "우산",
+      "category": "general",
+      "symbol": "UMB",
+      "tip": "우산은 금속, 천, 플라스틱이 혼합된 복합재질로 일반쓰레기로 배출합니다."
+    },
+    {
+      "name": "커피 찌꺼기",
+      "category": "food",
+      "symbol": "COF",
+      "tip": "커피 찌꺼기는 음식물쓰레기로 배출합니다."
+    },
+    {
+      "name": "과자 봉지",
+      "category": "vinyl",
+      "symbol": "SNK",
+      "tip": "내용물을 비운 깨끗한 과자 봉지는 비닐류로 분리배출합니다."
+    },
+    {
+      "name": "라면 봉지",
+      "category": "vinyl",
+      "symbol": "RMN",
+      "tip": "라면 봉지는 비닐류로 분리배출합니다. 이물질을 제거하고 배출하세요."
+    },
+    {
+      "name": "페트병 뚜껑",
+      "category": "plastic",
+      "symbol": "CAP",
+      "tip": "페트병 뚜껑은 플라스틱류로 분리배출합니다."
+    },
+    {
+      "name": "음료수 캔",
+      "category": "metal",
+      "symbol": "CAN",
+      "tip": "음료수 캔은 내용물을 비운 뒤 캔/금속류로 분리배출합니다."
+    },
+    {
+      "name": "사과 껍질",
+      "category": "food",
+      "symbol": "APL",
+      "tip": "사과 껍질은 음식물쓰레기로 배출합니다."
+    },
+    {
+      "name": "복숭아씨",
+      "category": "general",
+      "symbol": "PCH",
+      "tip": "딱딱한 과일씨는 음식물쓰레기가 아닌 일반쓰레기로 배출합니다."
+    },
+    {
+      "name": "조개껍데기",
+      "category": "general",
+      "symbol": "CLM",
+      "tip": "조개껍데기는 음식물쓰레기가 아닌 일반쓰레기로 배출합니다."
+    },
+    {
+      "name": "생선 뼈",
+      "category": "general",
+      "symbol": "FSH",
+      "tip": "생선 뼈는 일반쓰레기로 배출합니다."
+    },
+    {
+      "name": "돼지 뼈",
+      "category": "general",
+      "symbol": "BONE",
+      "tip": "딱딱한 동물 뼈는 일반쓰레기로 배출합니다."
+    },
+    {
+      "name": "두부",
+      "category": "food",
+      "symbol": "TOFU",
+      "tip": "두부는 음식물쓰레기로 배출합니다."
+    },
+    {
+      "name": "남은 밥",
+      "category": "food",
+      "symbol": "RICE",
+      "tip": "남은 밥은 음식물쓰레기로 배출합니다."
+    },
+    {
+      "name": "고추장 통",
+      "category": "plastic",
+      "symbol": "PASTE",
+      "tip": "내용물을 비우고 헹군 뒤 플라스틱류로 배출합니다."
+    },
+    {
+      "name": "비닐 장갑",
+      "category": "vinyl",
+      "symbol": "GLOVE",
+      "tip": "깨끗한 비닐 장갑은 비닐류로 분리배출합니다."
+    },
+    {
+      "name": "철사",
+      "category": "metal",
+      "symbol": "WIRE",
+      "tip": "철사는 캔/금속류로 분리배출합니다."
+    },
+    {
+      "name": "못",
+      "category": "metal",
+      "symbol": "NAIL",
+      "tip": "못은 캔/금속류로 분리배출합니다. 다치지 않도록 종이에 싸서 배출하세요."
+    },
+    {
+      "name": "폐건전지",
+      "category": "general",
+      "symbol": "BATT",
+      "tip": "폐건전지는 일반쓰레기가 아닌 별도 수거함에 배출합니다."
+    },
+    {
+      "name": "형광등",
+      "category": "general",
+      "symbol": "LAMP",
+      "tip": "형광등은 별도 폐형광등 수거함에 배출합니다."
+    },
+    {
+      "name": "헌 옷",
+      "category": "general",
+      "symbol": "CLOTH",
+      "tip": "헌 옷은 의류 수거함에 별도 배출하거나 일반쓰레기로 처리합니다."
+    },
+    {
+      "name": "고무장갑",
+      "category": "general",
+      "symbol": "RBR",
+      "tip": "고무장갑은 복합재질로 일반쓰레기로 배출합니다."
+    },
+    {
+      "name": "나무젓가락",
+      "category": "general",
+      "symbol": "CHOP",
+      "tip": "나무젓가락은 일반쓰레기로 배출합니다."
+    },
+    {
+      "name": "이쑤시개",
+      "category": "general",
+      "symbol": "PICK",
+      "tip": "이쑤시개는 너무 작아 선별이 어려우므로 일반쓰레기로 배출합니다."
+    },
+    {
+      "name": "종이 쇼핑백",
+      "category": "paper",
+      "symbol": "BAG",
+      "tip": "손잡이 끈을 제거한 뒤 종이류로 분리배출합니다."
+    },
+    {
+      "name": "우유갑",
+      "category": "paper",
+      "symbol": "UYU",
+      "tip": "우유갑은 내용물을 비우고 헹군 뒤 종이팩류로 분리배출합니다."
+    },
+    {
+      "name": "택배 상자",
+      "category": "paper",
+      "symbol": "PKG",
+      "tip": "테이프와 스티커를 제거한 뒤 종이류로 분리배출합니다."
+    },
+    {
+      "name": "에어캡(뽁뽁이)",
+      "category": "vinyl",
+      "symbol": "BUBBLE",
+      "tip": "에어캡은 비닐류로 분리배출합니다."
+    },
+    {
+      "name": "비닐 쇼핑백",
+      "category": "vinyl",
+      "symbol": "VBAG",
+      "tip": "깨끗한 비닐 쇼핑백은 비닐류로 분리배출합니다."
+    },
+    {
+      "name": "플라스틱 장난감",
+      "category": "general",
+      "symbol": "TOY",
+      "tip": "복합재질 장난감은 일반쓰레기로 배출합니다."
+    },
+    {
+      "name": "칫솔",
+      "category": "general",
+      "symbol": "BRUSH",
+      "tip": "칫솔은 복합재질로 일반쓰레기로 배출합니다."
+    },
+    {
+      "name": "면도기",
+      "category": "general",
+      "symbol": "RAZOR",
+      "tip": "면도기는 금속과 플라스틱이 혼합된 복합재질로 일반쓰레기로 배출합니다."
+    },
+    {
+      "name": "유리병",
+      "category": "general",
+      "symbol": "VBOTL",
+      "tip": "유리병은 병류로 별도 분리배출합니다. 뚜껑을 제거하고 배출하세요."
+    },
+    {
+      "name": "양파 망",
+      "category": "vinyl",
+      "symbol": "NET",
+      "tip": "양파 망은 비닐류로 분리배출합니다."
+    },
+    {
+      "name": "스프레이 캔",
+      "category": "metal",
+      "symbol": "SPRAY",
+      "tip": "내용물을 완전히 비운 뒤 캔/금속류로 배출합니다. 구멍을 뚫어 배출하세요."
+    },
+    {
+      "name": "통조림 캔",
+      "category": "metal",
+      "symbol": "TIN",
+      "tip": "내용물을 비우고 헹군 뒤 캔/금속류로 분리배출합니다."
+    },
+    {
+      "name": "오렌지 껍질",
+      "category": "food",
+      "symbol": "ORG",
+      "tip": "오렌지 껍질은 음식물쓰레기로 배출합니다."
+    },
+    {
+      "name": "수박씨",
+      "category": "food",
+      "symbol": "SEED",
+      "tip": "수박씨는 음식물쓰레기로 배출합니다."
+    },
+    {
+      "name": "호두 껍데기",
+      "category": "general",
+      "symbol": "WNUT",
+      "tip": "딱딱한 호두 껍데기는 일반쓰레기로 배출합니다."
+    },
+    {
+      "name": "버블티 컵",
+      "category": "plastic",
+      "symbol": "BTEA",
+      "tip": "내용물을 비우고 빨대를 제거한 뒤 플라스틱류로 배출합니다."
+    },
+    {
+      "name": "테이프",
+      "category": "general",
+      "symbol": "TAPE",
+      "tip": "테이프는 복합재질로 일반쓰레기로 배출합니다."
+    },
+    {
+      "name": "고양이 캔 사료",
+      "category": "metal",
+      "symbol": "PCAN",
+      "tip": "내용물을 비우고 헹군 뒤 캔/금속류로 분리배출합니다."
     }
   ]
 }
