@@ -41,7 +41,7 @@ function drawJejuWaste(items) {
         <span style="width: ${displayRate}%"></span>
       </div>
       <strong class="bar-rate">${fmtOne.format(item.rate)}%</strong>
-      <p class="bar-source">${item.matchedRows}</p>
+      <p class="bar-source">자료 기준: ${item.matchedRows}</p>
     `;
     jejuChart.appendChild(row);
   });
