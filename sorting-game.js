@@ -208,3 +208,10 @@ function pulseBin(binId, correct) {
 function binName(binId) {
   return bins.find((bin) => bin.id === binId)?.name ?? "알 수 없음";
 }
+document.addEventListener("keydown", (e) => {
+  const keyMap = { "1": 0, "2": 1, "3": 2, "4": 3, "5": 4, "6": 5 };
+  if (e.key in keyMap) {
+    const bin = bins[keyMap[e.key]];
+    if (bin) chooseBin(bin.id);
+  }
+});
